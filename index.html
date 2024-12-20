@@ -66,15 +66,17 @@
     }
 
     pre {
-      background-color: #f0f0f0;
-      padding: 15px;
-      width: 100%;
-      max-width: 600px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      white-space: pre-wrap;
-      word-wrap: break-word;
-    }
+  background-color: #f0f0f0;
+  padding: 15px;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  white-space: pre-wrap; /* Preserve line breaks and wrap long text */
+  word-wrap: break-word; /* Break long words to wrap */
+  overflow-x: auto; /* Add horizontal scrolling if necessary */
+}
+
 
     @media (max-width: 600px) {
       input[type="text"], button {
@@ -217,6 +219,9 @@ button:hover {
   } catch (error) {
     console.error('Error verifying JWKS:', error);
     alert("Error verifying JWKS: " + error.message);
+
+    // Display detailed error message in the results section
+  results.textContent = `Error verifying JWKS:\n${error.stack || error.message || error}`;
   }
 });
 
